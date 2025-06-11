@@ -17,10 +17,6 @@ export default function Main() {
         setRecipeShown(prevRecipeShown => !prevRecipeShown)
     }
 
-    const ingredientsListItems = ingredients.map(ingredient => (
-        <li key={ingredient}>{ingredient}</li>
-    ))
-
     return (
         <main>
             <form action={addIngredient} className="add-ingredient-form">
@@ -32,7 +28,11 @@ export default function Main() {
                 />
                 <button>Add ingredient</button>
             </form>
-            {ingredients.length > 0 && <IngredientsList ingredients={ingredients} ingredientsListItems={ingredientsListItems} toggleRecipeShown={toggleRecipeShown} />}
+            {ingredients.length > 0 && 
+                <IngredientsList
+                    ingredients={ingredients}
+                    toggleRecipeShown={toggleRecipeShown}
+                />}
             {recipeShown && <ClaudeRecipe />}
         </main>
     )
